@@ -124,3 +124,30 @@ body {
 .video-like-count i, .video-like-count p, .video-comment-count i, .video-comment-count p {
   text-shadow: 2px 2px #000000a3;
 }
+
+.auth-form, .upload-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 50px auto;
+}
+
+.auth-form input, .upload-form input {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.auth-form button, .upload-form button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.fa-heart {
+  cursor: pointer;
+  color: gray;
+  transition: color 0.2s;
+}
+
+.fa-heart.liked {
+  color: red;
+}

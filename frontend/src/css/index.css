@@ -146,7 +146,7 @@ body {
 
 .fa-heart {
   cursor: pointer;
-  color: gray;
+  color: white;
   transition: color 0.2s;
 }
 
@@ -154,35 +154,4 @@ body {
   color: red;
 }
 
-.menu-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  background-color: #f8f9fa; /* Light gray background */
-  border-top: 1px solid #ddd; /* Add a top border */
-  height:10vh;
-  width:100%;
-}
-
-.menu-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: #555;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.menu-button i {
-  font-size: 24px;
-  margin-bottom: 4px;
-}
-
-.menu-button:hover {
-  color: #000; /* Change color on hover */
-}
 

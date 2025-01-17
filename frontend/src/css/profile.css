@@ -9,6 +9,10 @@
 .inner-profile-container {
     height: 90vh;
     width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-header {
@@ -18,6 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 25px 25px 0;
 }
 .profile-header h1 {
     font-family: 'Montserrat', sans-serif;
@@ -29,14 +34,14 @@
     /* Responsive grid */
     gap: 8px;
     width: 100%;
-    padding: 8px;
+    padding: 8px 8px 25px;
+    max-width:750px;
 }
 
 .video-grid-item {
     position: relative;
-    width: 100%;
-    padding-top: 100%;
-    /* Maintain square aspect ratio */
+    width: 100%; /* Full width of the grid cell */
+    padding-top: 177.78%; /* 16:9 aspect ratio = (16 / 9) * 100 */
 }
 
 .video-thumbnail {
@@ -45,8 +50,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* Ensure the thumbnail fills the container */
+    object-fit: cover; /* Ensures the thumbnail fills the container */
     border-radius: 8px;
     cursor: pointer;
 }
@@ -60,9 +64,33 @@
     overflow: hidden;
     width: 150px;
     height: 150px;
+    box-shadow: 1px 1px 8px 1px #00000042;
+    margin:5px;
 }
 img.profile-header-pic {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+.logout-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: #ff4d4d; /* Red background */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+  }
+  
+  .logout-button:active {
+    background-color: #e60000; /* Even darker red on click */
+  }

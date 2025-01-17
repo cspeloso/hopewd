@@ -46,7 +46,7 @@ const VideoCard = ({ video, isCurrent }) => {
         muted
         loop
         preload="metadata"
-        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        // style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       >
         Your browser does not support the video tag.
       </video>

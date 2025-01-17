@@ -56,6 +56,14 @@ const searchVideos = async (query) => {
   return result.rows;
 };
 
+const getUserDetails = async (userId) => {
+  const result = await db.query('SELECT username FROM users WHERE id = $1', [userId]);
+  if (result.rows.length === 0) {
+    throw new Error('User not found');
+  }
+  return result.rows[0];
+};
+
 const getUserVideos = async (userId) => {
   const result = await db.query(
     'SELECT * FROM videos WHERE user_id = $1 ORDER BY created_at DESC',
@@ -94,5 +102,6 @@ module.exports = {
   getFeed,
   searchVideos,
   getUserVideos,
-  likeVideo
+  likeVideo,
+  getUserDetails
 };

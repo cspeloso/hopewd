@@ -39,9 +39,15 @@ router.get('/', async (req, res) => {
 router.get('/user', authenticate, async (req, res) => {
   try {
     const userId = req.user.id;
-    const videos = await videoService.getUserVideos(userId);
-    res.json(videos);
+    const user = await videoService.getUserDetails(userId); // Fetch user details
+    const videos = await videoService.getUserVideos(userId); // Fetch user's videos
+
+    res.json({
+      username: user.username, // Include the username
+      videos, // Include the list of videos
+    });
   } catch (error) {
+    console.error('Error fetching user profile:', error.message);
     res.status(500).json({ error: error.message });
   }
 });

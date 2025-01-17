@@ -5,9 +5,9 @@ import Home from './pages/Home';
 import Upload from './pages/Upload';
 import Profile from './pages/Profile';
 
-import RegisterForm from './components/RegisterForm';
-import LoginForm from './components/LoginForm';
-import UploadForm from './components/UploadForm';
+import RegisterForm from './components/forms/RegisterForm';
+import LoginForm from './components/forms/LoginForm';
+import UploadForm from './components/forms/UploadForm';
 
 
 const App = () => {

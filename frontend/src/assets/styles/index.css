@@ -1,0 +1,157 @@
+* {
+  box-sizing:border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background:black;  
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.home {
+  height:100vh;
+  overflow:hidden;
+}
+
+/* .video-feed {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  overflow-y: hidden; 
+} */
+/* 
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+} */
+
+.video-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  background-color: black;
+}
+
+.video-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-info {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+
+
+.video-feed {
+  height: 90%;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.video-container {
+  height: 100%;
+  min-height:100%;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:12.5px 0;
+}
+
+.video-container.active {}
+
+.video-info-container {
+  position: absolute;
+  bottom: -.1px;
+  left: 0;
+  color: white;
+  text-shadow: 0 0 BLACK;
+  width: 100%;
+  background: linear-gradient(1deg, #0000008c 10%, transparent 90%);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 15px;
+}
+.video-uploader-time-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.video-info-container h3, .video-info-container p, .video-info-container h4{
+  margin:0;
+}
+.video-uploader-time-container i {
+  font-size: 6px;
+  color: #ffffffcc;
+}
+.video-info-container h4 {
+  font-size: 15px;
+  color: #ffffffcc;
+}
+.video-likes-comments-container {
+  position: absolute;
+  right: 15px;
+  bottom: 15vh;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.video-like-count, .video-comment-count {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color: white;
+  font-size: 40px;
+}
+.video-like-count p, .video-comment-count p {
+  margin: 0px;
+  font-size:18px;
+}
+.video-like-count i, .video-like-count p, .video-comment-count i, .video-comment-count p {
+  text-shadow: 2px 2px #000000a3;
+}
+
+.auth-form, .upload-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 50px auto;
+}
+
+.auth-form input, .upload-form input {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.auth-form button, .upload-form button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.fa-heart {
+  cursor: pointer;
+  color: white;
+  transition: color 0.2s;
+}
+
+.fa-heart.liked {
+  color: red;
+}
+
+

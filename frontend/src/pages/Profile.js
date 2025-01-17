@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import MenuBar from '../components/MenuBar';
-import LoginForm from '../components/LoginForm';
-import CustomAlert from '../components/CustomAlert';
+import MenuBar from '../components/layout/MenuBar';
+import LoginForm from '../components/forms/LoginForm';
+import CustomAlert from '../components/alerts/CustomAlert';
 import '../css/profile.css';
-import '../css/index.css';
-import defaultProfilePic from '../images/default-profile-pic.jpg';
+import '../assets/styles/index.css';
+import defaultProfilePic from '../assets/images/default-profile-pic.jpg';
 
 const Profile = () => {
     const [username, setUsername] = useState('');

@@ -1,6 +1,6 @@
 import React from 'react';
-import VideoFeed from '../components/videofeed.js'; // Import the VideoFeed component
-import MenuBar from '../components/MenuBar.js' // Import Menu Bar
+import VideoFeed from '../components/video/videofeed.js'; // Import the VideoFeed component
+import MenuBar from '../components/layout/MenuBar.js' // Import Menu Bar
 
 const Home = () => {
 

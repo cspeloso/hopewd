@@ -22,27 +22,12 @@ const uploadVideo = async ({ title, url, thumbnail, userId }) => {
 
 // Get paginated feed
 const getFeed = async (page = 1, limit = 10, userId = null) => {
-  const offset = (page - 1) * limit;
-
   console.log('Fetching feed for userId:', userId || 'Guest'); // Debug log
-
+  const offset = (page - 1) * limit;
   const result = await db.query(
-    `
-    SELECT v.id, v.title, v.url, v.thumbnail, v.created_at, u.username AS uploader,
-           (SELECT COUNT(*) FROM likes WHERE video_id = v.id) AS like_count,
-           (SELECT COUNT(*) FROM comments WHERE video_id = v.id) AS comment_count,
-           CASE
-             WHEN $3::INTEGER IS NULL THEN false
-             ELSE (SELECT COUNT(*) > 0 FROM likes WHERE video_id = v.id AND user_id = $3::INTEGER)
-           END AS liked_by_user
-    FROM videos v
-    JOIN users u ON v.user_id = u.id
-    ORDER BY v.created_at DESC
-    LIMIT $1 OFFSET $2
-    `,
-    [limit, offset, userId]
+    'SELECT * FROM videos LIMIT $1 OFFSET $2',
+    [limit, offset]
   );
-
   console.log('Fetched videos:', result.rows); // Debug log
   return result.rows;
 };

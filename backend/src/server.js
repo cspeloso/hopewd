@@ -41,6 +41,11 @@ app.use('/api/users', userRoutes);
 // Serve static files from the uploads folder
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+app.get('/api/test', (req, res) => {
+  console.log('GET /api/test hit');
+  res.json({ message: 'Test endpoint is working!' });
+});
+
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);

@@ -6,7 +6,11 @@ const VideoFeed = () => {
   const [videos, setVideos] = useState([]);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
+  // Debugging the component mount
+  console.log('VideoFeed component rendering');
+
   const fetchVideos = async () => {
+    console.log('fetchVideos called'); // Check if this is being reached
     try {
       const token = localStorage.getItem('token'); // Retrieve JWT from localStorage if available
       const headers = token ? { Authorization: `Bearer ${token}` } : {}; // Include Authorization header only if token exists
@@ -22,7 +26,7 @@ const VideoFeed = () => {
       // Log the response status and data
       console.log('Response status:', res.status);
       console.log('Response data:', res.data);
- 
+
       setVideos(res.data);
     } catch (error) {
       // Log the error details
@@ -35,6 +39,7 @@ const VideoFeed = () => {
   };
 
   useEffect(() => {
+    console.log('useEffect called'); // Check if useEffect is firing
     fetchVideos();
   }, []);
 

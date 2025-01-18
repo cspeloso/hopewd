@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middleware
-const allowedOrigins = ['http://localhost:3000', 'http://hopewd.com'];
+const allowedOrigins = ['http://localhost:3000', 'https://hopewd.com'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {

@@ -1,2 +1,5 @@
 /.DS_Store
 /backend/.env
+/backend/uploads/*.*
+/backend/uploads/thumbnails
+/frontend/.env

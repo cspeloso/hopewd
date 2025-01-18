@@ -8,6 +8,8 @@ import '../css/profile.css';
 import '../assets/styles/index.css';
 import defaultProfilePic from '../assets/images/default-profile-pic.jpg';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Profile = () => {
     const [username, setUsername] = useState('');
     const [videos, setVideos] = useState([]);
@@ -24,7 +26,8 @@ const Profile = () => {
 
         const fetchProfileData = async () => {
             try {
-                const res = await axios.get('http://localhost:5001/api/videos/user', {
+                const apiUrl = process.env.REACT_APP_API_URL;
+                const res = await axios.get(`${apiUrl}/api/videos/user`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -66,7 +69,7 @@ const Profile = () => {
                         {videos.map((video) => (
                             <div key={video.id} className="video-grid-item">
                                 <img
-                                    src={`http://localhost:5001${video.thumbnail}`}
+                                    src={`${apiUrl}${video.thumbnail}`}
                                     alt={video.title}
                                     className="video-thumbnail"
                                 />

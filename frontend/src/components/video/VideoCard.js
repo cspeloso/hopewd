@@ -7,7 +7,8 @@ const VideoCard = ({ video, isCurrent }) => {
   const [likeCount, setLikeCount] = useState(Number(video.like_count)); // Ensure likeCount is a number
   const [liked, setLiked] = useState(video.liked_by_user); // Initialize from backend
 
-  const videoUrl = `http://localhost:5001${video.url}`;
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const videoUrl = `${apiUrl}${video.url}`;
 
   useEffect(() => {
     if (isCurrent) {
@@ -20,8 +21,9 @@ const VideoCard = ({ video, isCurrent }) => {
   const handleLike = async () => {
     try {
       const token = localStorage.getItem('token'); // Get JWT from localStorage
+      const apiUrl = process.env.REACT_APP_API_URL;
       const res = await axios.post(
-        `http://localhost:5001/api/videos/${video.id}/like`,
+        `${apiUrl}/api/videos/${video.id}/like`,
         {},
         {
           headers: {

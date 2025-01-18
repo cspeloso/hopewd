@@ -63,16 +63,6 @@ router.get('/search', async (req, res) => {
   }
 });
 
-// // Upload a video (protected route)
-// router.post('/', authenticate, async (req, res) => {
-//   try {
-//     const video = await videoService.uploadVideo(req.body, req.user.id);
-//     res.status(201).json(video);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
 //  For when a user uploads a video
 router.post('/upload', authenticate, upload.single('video'), async (req, res) => {
   try {

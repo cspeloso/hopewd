@@ -14,7 +14,8 @@ const VideoFeed = () => {
         ? { Authorization: `Bearer ${token}` }
         : {}; // Include Authorization header only if token exists
 
-      const res = await axios.get('http://localhost:5001/api/videos?page=1&limit=10', {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await axios.get(`${apiUrl}/api/videos?page=1&limit=10`, {
         headers,
       });
       setVideos(res.data);

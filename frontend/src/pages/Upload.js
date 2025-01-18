@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Upload = () => {
   const [title, setTitle] = useState('');
   const [file, setFile] = useState(null);
@@ -18,7 +20,7 @@ const Upload = () => {
     formData.append('video', file);
 
     try {
-      const res = await axios.post('http://localhost:5001/api/videos/upload', formData, {
+      const res = await axios.post(`${apiUrl}/api/videos/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -15,7 +15,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:5001/api/users/login', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, {
         username,
         password,
       });
@@ -26,7 +26,7 @@ const LoginForm = () => {
         message: 'Redirecting...',
         showSpinner: true, // Show spinner
       });
-      setTimeout(() => navigate('/'), 1500); // Redirect after 2 seconds
+      setTimeout(() => navigate('/'), 1500); // Redirect after 1.5 seconds
     } catch (error) {
       console.error('Error logging in:', error);
       setAlert({

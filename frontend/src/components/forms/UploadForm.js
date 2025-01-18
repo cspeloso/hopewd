@@ -22,7 +22,7 @@ const UploadForm = () => {
       });
 
       setTimeout(() => {
-          window.location.href = '/profile';
+        window.location.href = '/profile';
       }, 1500);
     }
   }, []);
@@ -31,7 +31,11 @@ const UploadForm = () => {
     e.preventDefault();
 
     if (!file) {
-      alert('Please select a file to upload!');
+      setAlert({
+        title: 'Error',
+        message: 'Please select a file to upload!',
+        onClose: () => setAlert(null),
+      });
       return;
     }
 
@@ -41,7 +45,7 @@ const UploadForm = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:5001/api/videos/upload', formData, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/videos/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -49,8 +53,12 @@ const UploadForm = () => {
       });
       setAlert({
         title: 'Upload Successful',
-        message: 'Your video has been uploaded.',
-        onClose: () => setAlert(null),
+        message: 'Your video has been uploaded successfully!',
+        onClose: () => {
+          setAlert(null);
+          setTitle(''); // Clear form fields
+          setFile(null);
+        },
       });
     } catch (error) {
       console.error('Error uploading video:', error);
@@ -64,7 +72,7 @@ const UploadForm = () => {
 
   return (
     <div className="upload-page">
-      <div class='upload-container'>
+      <div className="upload-container">
         <form onSubmit={handleUpload} className="upload-form">
           <h2>Upload a Video</h2>
           <input

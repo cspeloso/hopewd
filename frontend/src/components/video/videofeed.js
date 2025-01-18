@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import './VideoFeed.css'; // Create or update the CSS file
 import VideoCard from './VideoCard';
 
 const VideoFeed = () => {
@@ -10,11 +9,9 @@ const VideoFeed = () => {
   const fetchVideos = async () => {
     try {
       const token = localStorage.getItem('token'); // Retrieve JWT from localStorage if available
-      const headers = token
-        ? { Authorization: `Bearer ${token}` }
-        : {}; // Include Authorization header only if token exists
+      const headers = token ? { Authorization: `Bearer ${token}` } : {}; // Include Authorization header only if token exists
 
-      const res = await axios.get('http://localhost:5001/api/videos?page=1&limit=10', {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/videos?page=1&limit=10`, {
         headers,
       });
       setVideos(res.data);

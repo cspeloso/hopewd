@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import axios from 'axios';
-import { formatDate, formatNumber } from '../shared//utils';
+import { formatDate, formatNumber } from '../shared/utils';
 
 const VideoCard = ({ video, isCurrent }) => {
   const videoRef = useRef();
   const [likeCount, setLikeCount] = useState(Number(video.like_count)); // Ensure likeCount is a number
   const [liked, setLiked] = useState(video.liked_by_user); // Initialize from backend
 
-  const videoUrl = `http://localhost:5001${video.url}`;
+  const videoUrl = `${process.env.REACT_APP_API_URL}${video.url}`; // Use environment variable for the API URL
 
   useEffect(() => {
     if (isCurrent) {
@@ -21,7 +21,7 @@ const VideoCard = ({ video, isCurrent }) => {
     try {
       const token = localStorage.getItem('token'); // Get JWT from localStorage
       const res = await axios.post(
-        `http://localhost:5001/api/videos/${video.id}/like`,
+        `${process.env.REACT_APP_API_URL}/api/videos/${video.id}/like`,
         {},
         {
           headers: {
@@ -46,7 +46,6 @@ const VideoCard = ({ video, isCurrent }) => {
         muted
         loop
         preload="metadata"
-        // style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       >
         Your browser does not support the video tag.
       </video>

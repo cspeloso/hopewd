@@ -4,16 +4,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
+// Load environment variables from .env
 dotenv.config();
+
+console.log(`Running in ${process.env.NODE_ENV || 'development'} mode`);
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors({
-  origin: '*',
-  methods: ['GET','POST','PUT','DELETE']
+  origin: process.env.CORS_ORIGIN || '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(bodyParser.json());
 
@@ -29,7 +33,6 @@ const userRoutes = require('./routes/userRoutes');
 app.use('/api/users', userRoutes);
 
 // Serve static files from the uploads folder
-const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Start server

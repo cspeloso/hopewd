@@ -11,12 +11,26 @@ const VideoFeed = () => {
       const token = localStorage.getItem('token'); // Retrieve JWT from localStorage if available
       const headers = token ? { Authorization: `Bearer ${token}` } : {}; // Include Authorization header only if token exists
 
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/videos?page=1&limit=10`, {
+      // Log the API URL for debugging
+      const apiUrl = `${process.env.REACT_APP_API_URL}/api/videos?page=1&limit=10`;
+      console.log('API URL:', apiUrl);
+
+      const res = await axios.get(apiUrl, {
         headers,
       });
+
+      // Log the response status and data
+      console.log('Response status:', res.status);
+      console.log('Response data:', res.data);
+
       setVideos(res.data);
     } catch (error) {
-      console.error('Error fetching videos:', error);
+      // Log the error details
+      console.error('Error fetching videos:', error.message);
+      if (error.response) {
+        console.error('Error response status:', error.response.status);
+        console.error('Error response data:', error.response.data);
+      }
     }
   };
 

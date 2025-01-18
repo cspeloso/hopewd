@@ -22,7 +22,7 @@ const VideoFeed = () => {
       // Log the response status and data
       console.log('Response status:', res.status);
       console.log('Response data:', res.data);
-
+ 
       setVideos(res.data);
     } catch (error) {
       // Log the error details

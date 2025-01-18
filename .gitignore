@@ -3,3 +3,6 @@
 /backend/uploads/*.*
 /backend/uploads/thumbnails
 /frontend/.env
+LightsailDefaultKey-us-east-1.pem
+node_modules
+build

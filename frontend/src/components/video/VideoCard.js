@@ -52,11 +52,11 @@ const VideoCard = ({ video, isCurrent }) => {
       <div className="video-likes-comments-container">
         <div className="video-like-count" onClick={handleLike}>
           <i className={`fa-solid fa-heart ${liked ? 'liked' : 'not-liked'}`}></i>
-          <p>{formatNumber(likeCount)}</p>
+          {/* <p>{formatNumber(likeCount)}</p> */}
         </div>
         <div className="video-comment-count">
           <i className="fa-solid fa-comment-dots"></i>
-          <p>{formatNumber(video.comment_count)}</p>
+          {/* <p>{formatNumber(video.comment_count)}</p> */}
         </div>
       </div>
       <div className="video-info-container">
